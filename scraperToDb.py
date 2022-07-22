@@ -94,7 +94,7 @@ def scrapeData(url):
        
 
 # Scrape all book data concurrently and stores in a himpub lists:
-LightningScraping().scrape(scrapeData, Flattened().flat(book_links[:10]))
+LightningScraping().scrape(scrapeData, Flattened().flat(book_links))
 
 
 # Write scraped datas to database:
