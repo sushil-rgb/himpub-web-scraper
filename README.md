@@ -1,5 +1,5 @@
 # himpub-web-scraper
-A web scraper that scrape all the book data from the himpub and stores in a sqlite3 database. The scraper use concurrency features for faster scraping. It currently scrapes around 3K records in 4 minutes.
+A web scraper that scrape all the book data from the himpub and stores in a MYSQL database. The scraper use concurrency features for faster scraping. It currently scrapes around 3K records in 4 minutes.
 
 # Instructions
 > Clone the repository
