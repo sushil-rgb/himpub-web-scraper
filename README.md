@@ -7,4 +7,4 @@ A web scraper that scrape all the book data from the himpub and stores in a MYSQ
   pip install requests
   pip install beautifulsoup4
 
-run the scraperToDb.py file and the scraper will scrape and store the data in sqlite3 database.
+run the scraperToDb.py file and the scraper will scrape and store the data in MYSQL database.
