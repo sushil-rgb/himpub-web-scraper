@@ -1,4 +1,4 @@
-import sqlite3
+import mysql.connector
 import time
 from bs4 import BeautifulSoup
 import requests
@@ -16,11 +16,17 @@ himpub_base_url = "https://www.himpub.com"
 headers = {"User-Agent": get_user_agent()}
 
 
-# Making a connection to sqlite database:
-database_name = "test"      
-conn = sqlite3.connect(f"{database_name}.db")
+# Making a connection to sqlite database:    
+conn = mysql.connector.connect(
+    host = 'localhost',
+    user = 'root',
+    password = '',
+    database = 'himpub',
+    
+)
+
 curr = conn.cursor()
-table_name = """CREATE TABLE IF NOT EXISTS books(Name TEXT, ISBN TEXT, Student_Price TEXT, Library_Price TEXT, Edition TEXT, Year of Publication TEXT, Book_links TEXT, Image_links TEXT)"""
+table_name = """CREATE TABLE books(Name VARCHAR(50), ISBN VARCHAR(50), Student_Price VARCHAR(50), Library_Price VARCHAR(50), Edition VARCHAR(50), Year_Of_Publication VARCHAR(50), Book_links VARCHAR(50), Image_links VARCHAR(50))"""
 curr.execute(table_name)
 
 # scrape all category links
@@ -98,7 +104,7 @@ LightningScraping().scrape(scrapeData, Flattened().flat(book_links))
 
 
 # Write scraped datas to database:
-curr.executemany("INSERT INTO books VALUES(?,?,?,?,?,?,?,?)", himpubs)
+curr.executemany("INSERT INTO books VALUES(%s,%s,%s,%s,%s,%s,%s,%s)", himpubs)
 conn.commit()
 conn.close()
 
